@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday, Krishna</title>
+    <title>For Krishna</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header class="hero">
-            <h1>Happy Birthday, Krishna ✨</h1>
-            <p>To someone incredibly special. I made this little space just for you.</p>
-            <button id="startJourneyBtn">See Your Surprise</button>
-        </header>
 
-        <div id="hiddenMessage" class="hidden">
-            <h2>You deserve the world today.</h2>
-            <p>Even though things change, my appreciation for who you are hasn't. Here are a few things I wanted to remind you of...</p>
-            
-            <div class="note-cards">
-                <div class="card">Read when you feel sad</div>
-                <div class="card">A funny memory</div>
-                <div class="card">My wish for you</div>
-            </div>
-        </div>
+    <audio id="bg-music" src="music.mp3" preload="auto"></audio>
+
+    <div class="landing-container">
+        <h1 id="line1" class="fade-up">
+            Hey <span class="name-highlight">Krishna</span>...
+        </h1>
+        
+        <p id="line2" class="fade-up">
+            I made something for you 😊
+        </p>
+
+        <button id="openBtn" class="fade-up">Open</button>
     </div>
 
     <script src="script.js"></script>
