@@ -1,4 +1,15 @@
-/* Core Reset & Setup */
+/* --- DESIGN SYSTEM VARIABLES --- */
+:root {
+    --bg-gradient: linear-gradient(135deg, #fdfbf7 0%, #f4eee8 50%, #e8e0d5 100%);
+    --text-main: #4a4a4a;
+    --text-light: #777;
+    --accent-color: #a87b66; /* Warm, earthy tone */
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+}
+
+/* --- CORE RESET & SETUP --- */
 * {
     margin: 0;
     padding: 0;
@@ -6,85 +17,170 @@
 }
 
 body {
-    /* Soft, dreamy pastel gradient (sky, beige, soft pink) */
-    background: linear-gradient(135deg, #e0f2fe 0%, #faebd7 50%, #ffe0e9 100%);
+    background: var(--bg-gradient);
     background-size: 200% 200%;
-    animation: slowPan 15s ease infinite; /* Subtle background movement */
+    animation: slowPan 20s ease infinite;
     min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+    overflow-x: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
-    color: #4a4a4a;
-    overflow: hidden;
 }
 
-/* Background Animation */
 @keyframes slowPan {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-.landing-container {
-    text-align: center;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-}
-
-/* Typography */
-h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 300;
-    letter-spacing: 0.5px;
-}
-
-.name-highlight {
+/* --- TYPOGRAPHY --- */
+h1, h2, .highlight-line, .final-line {
     font-family: 'Playfair Display', serif;
     font-style: italic;
-    color: #b28d73; /* A warm, grounded earthy tone */
+    color: var(--accent-color);
     font-weight: 500;
 }
 
-p {
-    font-size: clamp(1.2rem, 3vw, 1.5rem);
-    font-weight: 300;
-    color: #666;
+h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 10px; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 25px; text-align: center; }
+p { font-size: clamp(1.1rem, 2.5vw, 1.3rem); font-weight: 300; line-height: 1.6; color: var(--text-main); }
+.sub-text { font-size: 1rem; color: var(--text-light); margin-top: 8px; }
+.emotional-line { font-style: italic; color: var(--text-light); margin-bottom: 20px; text-align: center;}
+
+/* --- PAGE CONTAINER LOGIC --- */
+#app-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 40px 20px;
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* The Button */
+/* Pages are absolute to sit on top of each other, but only .active is visible */
+.page {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative; /* Allows page to stretch container height */
+}
+
+/* --- GLASSMORPHISM COMPONENTS --- */
+.cards-wrapper, .blocks-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* For side-by-side blocks on desktop */
+@media (min-width: 768px) {
+    .blocks-wrapper { flex-direction: row; }
+}
+
+.glass-card, .glass-block {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.glass-card:hover, .glass-block:hover {
+    transform: translateY(-3px);
+}
+
+.glass-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(168, 123, 102, 0.2);
+    padding-bottom: 5px;
+}
+
+/* --- SPECIFIC LAYOUTS --- */
+.lines-container, .thoughts-wrapper, .lines-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.lines-container p { text-align: left; border-left: 2px solid rgba(168, 123, 102, 0.4); padding-left: 20px; margin: 0 auto; width: 90%;}
+.final-line { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-top: 40px; }
+
+/* --- BUTTONS --- */
 button {
-    margin-top: 10px;
+    margin-top: 30px;
     padding: 12px 35px;
     font-size: 1.1rem;
     font-family: 'Poppins', sans-serif;
     color: #fff;
-    background-color: rgba(178, 141, 115, 0.85); /* Matches the name highlight */
+    background-color: var(--accent-color);
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    backdrop-filter: blur(5px);
     transition: all 0.4s ease;
-    box-shadow: 0 4px 15px rgba(178, 141, 115, 0.2);
+    box-shadow: 0 4px 15px rgba(168, 123, 102, 0.2);
 }
 
 button:hover {
     transform: translateY(-2px) scale(1.05);
-    background-color: rgba(178, 141, 115, 1);
-    box-shadow: 0 8px 25px rgba(178, 141, 115, 0.4);
+    box-shadow: 0 8px 25px rgba(168, 123, 102, 0.4);
 }
 
-/* Animation Classes */
-.fade-up {
+#restartBtn { background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); }
+#restartBtn:hover { background: var(--accent-color); color: #fff; }
+
+/* Floating Music Toggle */
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    margin: 0;
+    padding: 10px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0.6;
+}
+.music-btn:hover { opacity: 1; transform: scale(1.1); }
+.hidden { display: none !important; }
+
+/* --- JS ANIMATION CLASSES --- */
+.fade-element {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
+    transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.fade-up.visible {
+.fade-element.visible {
     opacity: 1;
     transform: translateY(0);
 }

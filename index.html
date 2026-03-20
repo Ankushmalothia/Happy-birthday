@@ -4,24 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For Krishna</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <audio id="bg-music" src="music.mp3" preload="auto"></audio>
+    <audio id="bg-music" src="music.mp3" loop preload="auto"></audio>
+    
+    <button id="musicToggle" class="music-btn hidden">
+        <span id="musicIcon">🎵</span>
+    </button>
 
-    <div class="landing-container">
-        <h1 id="line1" class="fade-up">
-            Hey <span class="name-highlight">Krishna</span>...
-        </h1>
-        
-        <p id="line2" class="fade-up">
-            I made something for you 😊
-        </p>
+    <main id="app-container">
 
-        <button id="openBtn" class="fade-up">Open</button>
-    </div>
+        <section class="page active" id="page-1">
+            <h1 class="fade-element">Hey <span class="name-highlight">Krishna</span>...</h1>
+            <p class="fade-element">I made something for you 😊</p>
+            <button class="nav-btn fade-element" data-target="page-2">Open</button>
+        </section>
+
+        <section class="page" id="page-2">
+            <h2 class="fade-element">Something about you...</h2>
+            <div class="lines-container">
+                <p class="fade-element">You make normal conversations feel interesting.</p>
+                <p class="fade-element">You notice small things that most people ignore.</p>
+                <p class="fade-element">You’re the kind of person people feel comfortable around.</p>
+                <p class="fade-element">You don’t even try… but you stand out.</p>
+            </div>
+            <button class="nav-btn fade-element" data-target="page-3">Keep going</button>
+        </section>
+
+        <section class="page" id="page-3">
+            <h2 class="fade-element">Some moments I still remember...</h2>
+            <div class="cards-wrapper">
+                <div class="glass-card fade-element">
+                    <p>That random day when we kept arguing over something stupid 😭</p>
+                    <p class="sub-text">And somehow it turned into laughing for no reason.</p>
+                </div>
+                <div class="glass-card fade-element">
+                    <p>That time when the conversation just didn’t feel like it should end.</p>
+                </div>
+                <div class="glass-card fade-element">
+                    <p>The way you react to small things…</p>
+                    <p class="sub-text">I don’t think you even realize it.</p>
+                </div>
+            </div>
+            <div class="footer-section fade-element">
+                <p class="emotional-line">You probably don’t even remember some of these...</p>
+                <button class="nav-btn" data-target="page-4">Next</button>
+            </div>
+        </section>
+
+        <section class="page" id="page-4">
+            <h2 class="fade-element">I appreciate this about you</h2>
+            <div class="blocks-wrapper">
+                <div class="glass-block fade-element">
+                    <h3>As a Person</h3>
+                    <p>You’re genuine, even when you don’t try to be.</p>
+                </div>
+                <div class="glass-block fade-element">
+                    <h3>As a Friend</h3>
+                    <p>You make things feel easy.</p>
+                </div>
+                <div class="glass-block fade-element">
+                    <h3>In My Life</h3>
+                    <p>Things just feel a little better with you around.</p>
+                </div>
+            </div>
+            <div class="footer-section fade-element">
+                <p class="emotional-line">I don't say this often... but I mean it.</p>
+                <button class="nav-btn" data-target="page-5">One more thing...</button>
+            </div>
+        </section>
+
+        <section class="page" id="page-5">
+            <h2 class="fade-element">I don't know what's ahead...</h2>
+            <div class="thoughts-wrapper">
+                <p class="fade-element">I don't know what the future looks like...</p>
+                <p class="fade-element">And I'm not trying to force anything.</p>
+                <p class="fade-element">But I do know this—</p>
+                <p class="fade-element highlight-line">I like having you in my life.</p>
+                <p class="fade-element">And maybe... there's still something here.</p>
+                <p class="fade-element">I'm not in a hurry... and I don't want to force anything.</p>
+                <p class="fade-element">I just didn't want to leave things unsaid.</p>
+            </div>
+            <button class="nav-btn fade-element" data-target="page-6">Last thing...</button>
+        </section>
+
+        <section class="page" id="page-6">
+            <div class="lines-wrapper">
+                <p class="fade-element">That's all I wanted to show you.</p>
+                <p class="fade-element">Nothing too big... just something honest.</p>
+                <p class="fade-element">I'm really glad you're in my life.</p>
+                <p class="fade-element">In whatever way you are right now.</p>
+            </div>
+            <h2 class="fade-element final-line">And honestly... I'm just happy it's you.</h2>
+            <button class="nav-btn fade-element" data-target="page-1" id="restartBtn">Start again</button>
+        </section>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
